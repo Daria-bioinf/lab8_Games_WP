@@ -24,7 +24,8 @@ public partial class Window1 : Window
 
     public void BtnGra2_Click(object source, RoutedEventArgs args)
     {
-     
+        var liarGame = new LiarGameWindow();
+        liarGame.Show();
     }
 
     public void BtnGra3_Click(object source, RoutedEventArgs args)
@@ -36,4 +37,6 @@ public partial class Window1 : Window
     {
        
     }
+
+    
 }
