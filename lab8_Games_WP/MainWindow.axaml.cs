@@ -10,15 +10,15 @@ namespace lab8_Games_WP
             InitializeComponent();
         }
 
-        public void BtnStartClick(object sender, RoutedEventArgs e)
+        public void BtnStart_Click(object sender, RoutedEventArgs e)
         {
         }
 
-        public void BtnWiekszaClick(object sender, RoutedEventArgs e)
+        public void BtnWieksza_Click(object sender, RoutedEventArgs e)
         {
         }
 
-        public void BtnMniejszaClick(object sender, RoutedEventArgs e)
+        public void BtnMniejsza_Click(object sender, RoutedEventArgs e)
         {
         }
     }
