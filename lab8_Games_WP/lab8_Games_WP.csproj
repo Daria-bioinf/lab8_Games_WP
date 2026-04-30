@@ -17,4 +17,10 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MenuWindow.axaml.cs">
+      <DependentUpon>MenuWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
