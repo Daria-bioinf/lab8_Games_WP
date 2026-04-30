@@ -5,5 +5,23 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="lab8_Games_WP.MainWindow"
         Title="lab8_Games_WP">
-    Welcome to Avalonia!
+	<StackPanel Margin="20" Spacing="15" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+		
+		<TextBlock Text="Gra: Więcej czy Mniej?" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+		<TextBlock Text="Aktualna Karta:" FontSize="18" HorizontalAlignment="Center"/>
+		<TextBlock x:Name="txtCurrentCard" Text="?" FontSize="72" FontWeight="Bold" HorizontalAlignment="Center" Foreground="DarkRed"/>
+
+		<StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
+			<Button x:Name="btnWieksza" Content="Większa ⬆️" Click="BtnWieksza_Click" FontSize="18" Padding="15,10"/>
+			<Button x:Name="btnMniejsza" Content="Mniejsza ⬇️" Click="BtnMniejsza_Click" FontSize="18" Padding="15,10"/>
+		</StackPanel>
+
+		<TextBlock x:Name="txtResult" Text="Zgadnij następną kartę!" FontSize="20" Foreground="Blue" HorizontalAlignment="Center"/>
+		<TextBlock x:Name="txtScore" Text="Punkty: 0" FontSize="18" HorizontalAlignment="Center"/>
+
+		<Button x:Name="btnStart" Content="Nowa Gra / Losuj" Click="BtnStart_Click" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+	</StackPanel>
 </Window>
