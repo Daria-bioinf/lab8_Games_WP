@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="MenuWindow.axaml.cs">
-      <DependentUpon>MenuWindow.axaml</DependentUpon>
+    <Compile Update="Window1.axaml.cs">
+      <DependentUpon>Window1.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
