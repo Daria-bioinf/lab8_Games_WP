@@ -18,19 +18,35 @@ public partial class LiarGameWindow : Window
     {
         InitializeComponent();
     }
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
+
+    private void CheckResult(bool playerSaysLiar) {
+        txtCardValue.Text = realCard.ToString();
+        bool correct = (playerSaysLiar == isLying);
+
+        if (correct)
+        {
+            score++;
+            txtStatus.Text = "Dobrze!";
+
+        } else
+        {
+            txtStatus.Text = "Zle!";
+
+        }
+        txtScore.Text = $"Punkty: {score}";
+        btnNext.IsEnabled = true;
+    
     }
+
 
     public void BtnBelieve_Click(object source, RoutedEventArgs args)
     {
-        
+        CheckResult(false);
     }
 
     public void BtnLiar_Click(object source, RoutedEventArgs args)
     {
-        
+        CheckResult(true);
     }
 
     public void BtnNext_Click(object source, RoutedEventArgs args)
