@@ -22,6 +22,6 @@
 		<TextBlock x:Name="txtScore" Text="Punkty: 0" FontSize="18" HorizontalAlignment="Center"/>
 
 		<Button x:Name="btnStart" Content="Nowa Gra / Losuj" Click="BtnStart_Click" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-
+		<Button Content="⬅ Powrót do menu" Click="BtnBack_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
 	</StackPanel>
 </Window>

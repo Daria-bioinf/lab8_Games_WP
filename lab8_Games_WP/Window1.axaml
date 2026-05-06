@@ -22,7 +22,7 @@
 		<StackPanel Spacing="10" HorizontalAlignment="Center">
 			<Button Content="Gra 1: Więcej czy Mniej" Click="BtnGra1_Click" Width="220" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
 			<Button Content="Gra 2: Liar's Game" Click="BtnGra2_Click" Width="220" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
-			<Button Content="Gra 3: Oczko (21)" Click="BtnGra3_Click" Width="220" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+			<Button Content="Gra 3: Blackjack (21)" Click="BtnGra3_Click" Width="220" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
 			<Button Content="📜 Historia rozgrywek" Click="BtnHistoria_Click" Width="220" HorizontalContentAlignment="Center" Margin="0,20,0,0" Background="LightBlue"/>
 		</StackPanel>
 

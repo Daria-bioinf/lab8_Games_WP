@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="lab8_Games_WP.BlackjackWindow"
+        Title="BlackjackWindow">
+	<StackPanel Margin="20" Spacing="15" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+		<TextBlock Text="Gra: Blackjack (21) 🃏" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Gold"/>
+
+		<StackPanel Spacing="5">
+			<TextBlock Text="Krupier:" HorizontalAlignment="Center" Foreground="Gray"/>
+			<TextBlock x:Name="txtDealerCards" Text="?? ??" FontSize="30" HorizontalAlignment="Center"/>
+		</StackPanel>
+
+		<Separator Height="2" Background="Gray" Margin="0,5"/>
+
+		<StackPanel Spacing="5">
+			<TextBlock Text="Twoje Karty:" HorizontalAlignment="Center" FontWeight="Bold"/>
+			<TextBlock x:Name="txtPlayerCards" Text="-" FontSize="40" HorizontalAlignment="Center" Foreground="LightGreen"/>
+			<TextBlock x:Name="txtPlayerScore" Text="Suma: 0" FontSize="18" HorizontalAlignment="Center"/>
+		</StackPanel>
+
+		<TextBlock x:Name="txtStatus" Text="Dobierz kartę lub Pas?" FontSize="18" HorizontalAlignment="Center" Foreground="Cyan"/>
+
+		<StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
+			<Button Content="Dobierz (Hit)" Click="BtnHit_Click" Width="120" Background="DarkGreen" HorizontalAlignment="Center"/>
+			<Button Content="Pas (Stand)" Click="BtnStand_Click" Width="120" Background="DarkRed" HorizontalAlignment="Center"/>
+		</StackPanel>
+
+		<Button Content="Nowa Gra" Click="BtnReset_Click" HorizontalAlignment="Center" Margin="0,10"/>
+		<Button Content="Wyjdź" Click="BtnClose_Click" HorizontalAlignment="Center" Foreground="Gray"/>
+
+	</StackPanel>
+</Window>

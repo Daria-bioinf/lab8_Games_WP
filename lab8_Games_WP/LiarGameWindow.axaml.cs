@@ -17,9 +17,16 @@ public partial class LiarGameWindow : Window
     public LiarGameWindow()
     {
         InitializeComponent();
+        BtnNext_Click(null, null);
     }
 
-    private void CheckResult(bool playerSaysLiar) {
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+
+    private void CheckResult(bool playerSaysLiar)
+    {
         txtCardValue.Text = realCard.ToString();
         bool correct = (playerSaysLiar == isLying);
 
@@ -27,17 +34,18 @@ public partial class LiarGameWindow : Window
         {
             score++;
             txtStatus.Text = "Dobrze!";
-
-        } else
+        }
+        else
         {
             txtStatus.Text = "Zle!";
-
         }
-        txtScore.Text = $"Punkty: {score}";
-        btnNext.IsEnabled = true;
-    
-    }
 
+        txtScore.Text = $"Punkty: {score}";
+
+        btnBelieve.IsEnabled = false;
+        btnLiar.IsEnabled = false;
+        btnNext.IsEnabled = true;
+    }
 
     public void BtnBelieve_Click(object source, RoutedEventArgs args)
     {
@@ -49,10 +57,9 @@ public partial class LiarGameWindow : Window
         CheckResult(true);
     }
 
-    public void BtnNext_Click(object source, RoutedEventArgs args)
+    public void BtnNext_Click(object? source, RoutedEventArgs? args)
     {
         realCard = rand.Next(1, 11);
-
         isLying = rand.Next(0, 2) == 0;
 
         if (isLying)
@@ -66,10 +73,13 @@ public partial class LiarGameWindow : Window
         {
             claimedCard = realCard;
         }
+
         txtClaim.Text = $"Komputer mowi: To jest {claimedCard}";
         txtCardValue.Text = "?";
         txtStatus.Text = "Czy on klamie?";
 
+        btnBelieve.IsEnabled = true;
+        btnLiar.IsEnabled = true;
         btnNext.IsEnabled = false;
     }
 }

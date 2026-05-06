@@ -31,9 +31,9 @@ public partial class Window1 : Window
             return;
         }
         var gameWindow = new MainWindow();
+        gameWindow.ParentMenu = this;
         gameWindow.Show();
-
-        this.Close();
+        this.Hide();
     }
 
     public void BtnGra2_Click(object source, RoutedEventArgs args)
@@ -44,7 +44,8 @@ public partial class Window1 : Window
 
     public void BtnGra3_Click(object source, RoutedEventArgs args)
     {
-
+        var bj = new BlackjackWindow();
+        bj.Show();
     }
 
     public void BtnHistoria_Click(object source, RoutedEventArgs args)

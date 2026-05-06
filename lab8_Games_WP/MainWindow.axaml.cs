@@ -10,7 +10,7 @@ namespace lab8_Games_WP
         {
             InitializeComponent();
         }
-
+        public Window? ParentMenu { get; set; }
         Random rand = new Random();
         int currentCard = 0;
         int score = 0;
@@ -22,46 +22,70 @@ namespace lab8_Games_WP
             txtCurrentCard.Text = currentCard.ToString();
             txtScore.Text = "Punkty: 0";
             txtResult.Text = "Zgadnij następną kartę!";
+
+            btnWieksza.IsEnabled = true;
+            btnMniejsza.IsEnabled = true;
         }
 
         public void BtnWieksza_Click(object sender, RoutedEventArgs e)
         {
-            int newCard = rand.Next(1, 11);
+            int newCard;
+            do
+            {
+                newCard = rand.Next(1, 11);
+            } while (newCard == currentCard);
 
             if (newCard > currentCard)
             {
                 score++;
                 txtResult.Text = "Dobrze!";
+
+                currentCard = newCard;
+                txtCurrentCard.Text = currentCard.ToString();
+                txtScore.Text = $"Punkty: {score}";
             }
             else
             {
-                txtResult.Text = "Źle! Koniec gry";
+                txtResult.Text = $"Źle! Karta była {newCard}. Koniec gry";
+                btnWieksza.IsEnabled = false;
+                btnMniejsza.IsEnabled = false;
                 return;
             }
 
-            currentCard = newCard;
-            txtCurrentCard.Text = currentCard.ToString();
-            txtScore.Text = $"Punkty: {score}";
+            
         }
 
         public void BtnMniejsza_Click(object sender, RoutedEventArgs e)
         {
-            int newCard = rand.Next(1, 11);
+            int newCard;
+            do
+            {
+                newCard = rand.Next(1, 11);
+            } while (newCard == currentCard);
 
             if (newCard < currentCard)
             {
                 score++;
                 txtResult.Text = "Dobrze!";
+                currentCard = newCard;
+                txtCurrentCard.Text = currentCard.ToString();
+                txtScore.Text = $"Punkty: {score}";
             }
             else
             {
-                txtResult.Text = "Źle! Koniec gry";
-                return;
+                txtResult.Text = $"Źle! Karta była {newCard}. Koniec gry";
+                btnWieksza.IsEnabled = false;
+                btnMniejsza.IsEnabled = false;
             }
+        }
 
-            currentCard = newCard;
-            txtCurrentCard.Text = currentCard.ToString();
-            txtScore.Text = $"Punkty: {score}";
+        public void BtnBack_Click(object source, RoutedEventArgs args)
+        {
+            if (ParentMenu != null)
+            {
+                ParentMenu.Show(); 
+            }
+            this.Close();
         }
     }
 }

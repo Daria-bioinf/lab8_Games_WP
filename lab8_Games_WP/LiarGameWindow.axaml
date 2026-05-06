@@ -23,8 +23,8 @@
 		<TextBlock x:Name="txtScore" Text="Punkty: 0" FontSize="14" HorizontalAlignment="Center" Foreground="Gray"/>
 
 		<StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
-			<Button Content="Wierzę! ✅" Click="BtnBelieve_Click" Width="130" Height="50" Background="DarkGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-			<Button Content="Kłamstwo! ❌" Click="BtnLiar_Click" Width="130" Height="50" Background="DarkRed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+			<Button x:Name="btnBelieve" Content="Wierzę! ✅" Click="BtnBelieve_Click" Width="130" Height="50" Background="DarkGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+			<Button x:Name="btnLiar" Content="Kłamstwo! ❌" Click="BtnLiar_Click" Width="130" Height="50" Background="DarkRed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		</StackPanel>
 
 		<Button Content="Następna runda" Click="BtnNext_Click" HorizontalAlignment="Center" IsEnabled="False" x:Name="btnNext"/>
