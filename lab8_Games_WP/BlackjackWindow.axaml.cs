@@ -55,11 +55,17 @@ public partial class BlackjackWindow : Window
 
     private void UpdateUI()
     {
-        txtPlayerCards.Text = string.Join(" | ", playerCards.Select(c => c.name));
-        txtDealerCards.Text = $"{dealerCards[0]} ??";
+        txtPlayerCards.Text =
+            string.Join(" | ", playerCards.Select(c => c.name));
 
-        playerCards.Sum(c => c.value);
-        //txtPlayerScore.Text = $"Suma: {playerSum}";
+        txtDealerCards.Text =
+            $"{dealerCards[0].name} | ??";
+
+        int playerSum =
+            playerCards.Sum(c => c.value);
+
+        txtPlayerScore.Text =
+            $"Suma: {playerSum}";
     }
 
     public void BtnHit_Click(object source, RoutedEventArgs args)
@@ -68,27 +74,36 @@ public partial class BlackjackWindow : Window
 
         UpdateUI();
 
-        int playerSum = playerCards.Sum();
+        int playerSum =
+            playerCards.Sum(c => c.value);
 
         if (playerSum > 21)
         {
+            txtDealerCards.Text =
+                string.Join(" | ", dealerCards.Select(c => c.name));
+
             txtStatus.Text = "Przegrałeś! Ponad 21";
         }
     }
 
     public void BtnStand_Click(object source, RoutedEventArgs args)
     {
-        int dealerSum = dealerCards.Sum();
+        int dealerSum =
+            dealerCards.Sum(c => c.value);
 
         while (dealerSum < 17)
         {
-            dealerCards.Add(rand.Next(1, 11));
-            dealerSum = dealerCards.Sum();
+            dealerCards.Add(GenerateCard());
+
+            dealerSum =
+                dealerCards.Sum(c => c.value);
         }
 
-        txtDealerCards.Text = string.Join(" ", dealerCards);
+        txtDealerCards.Text =
+            string.Join(" | ", dealerCards.Select(c => c.name));
 
-        int playerSum = playerCards.Sum();
+        int playerSum =
+            playerCards.Sum(c => c.value);
 
         if (dealerSum > 21 || playerSum > dealerSum)
         {
