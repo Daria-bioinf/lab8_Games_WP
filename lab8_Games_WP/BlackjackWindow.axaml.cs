@@ -12,13 +12,28 @@ public partial class BlackjackWindow : Window
 {
     Random rand = new Random();
 
-    List<int> playerCards = new List<int>();
-    List<int> dealerCards = new List<int>();
+    List<(string name, int value)> playerCards = new();
+    List<(string name, int value)> dealerCards = new();
 
     public BlackjackWindow()
     {
         InitializeComponent();
         StartGame();
+    }
+    private (string name, int value) GenerateCard()
+    { 
+        int card = rand.Next(1, 14);
+
+        switch (card)
+        {
+            case 1: return ("As", 11);
+            case 11: return ("Walet", 10);
+            case 12: return ("Dama", 10);
+            case 13: return ("Krol", 10);
+            default: return (card.ToString(), card);
+        }
+       
+
     }
 
     private void StartGame()
@@ -26,11 +41,11 @@ public partial class BlackjackWindow : Window
         playerCards.Clear();
         dealerCards.Clear();
 
-        playerCards.Add(rand.Next(1, 11));
-        playerCards.Add(rand.Next(1, 11));
+        playerCards.Add(GenerateCard());
+        playerCards.Add(GenerateCard());
 
-        dealerCards.Add(rand.Next(1, 11));
-        dealerCards.Add(rand.Next(1, 11));
+        dealerCards.Add(GenerateCard());
+        dealerCards.Add(GenerateCard());
 
         UpdateUI();
 
@@ -40,16 +55,16 @@ public partial class BlackjackWindow : Window
 
     private void UpdateUI()
     {
-        txtPlayerCards.Text = string.Join(" | ", playerCards);
+        txtPlayerCards.Text = string.Join(" | ", playerCards.Select(c => c.name));
         txtDealerCards.Text = $"{dealerCards[0]} ??";
 
-        int playerSum = playerCards.Sum();
-        txtPlayerScore.Text = $"Suma: {playerSum}";
+        playerCards.Sum(c => c.value);
+        //txtPlayerScore.Text = $"Suma: {playerSum}";
     }
 
     public void BtnHit_Click(object source, RoutedEventArgs args)
     {
-        playerCards.Add(rand.Next(1, 11));
+        playerCards.Add(GenerateCard());
 
         UpdateUI();
 
