@@ -50,7 +50,9 @@ public partial class Window1 : Window
 
     public void BtnHistoria_Click(object source, RoutedEventArgs args)
     {
+        var historyWindow = new HistoryWindow();
 
+        historyWindow.Show();
     }
 
 

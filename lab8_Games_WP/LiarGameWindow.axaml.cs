@@ -112,12 +112,13 @@ public partial class LiarGameWindow : Window
                 $"Źle! To był {realSuit}";
         }
 
-        txtScore.Text =
-            $"Punkty: {score}";
+        txtScore.Text =$"Punkty: {score}";
 
         SuitPanel.IsVisible = false;
 
         btnNext.IsEnabled = true;
+
+        GameHistory.History.Add($"Liar Game - Punkty: {score}");
     }
 
     public void BtnBelieve_Click(object source, RoutedEventArgs args)
@@ -134,11 +135,9 @@ public partial class LiarGameWindow : Window
     {
         realCard = rand.Next(1, 14);
 
-        realSuit =
-            suits[rand.Next(0, suits.Length)];
+        realSuit = suits[rand.Next(0, suits.Length)];
 
-        isLying =
-            rand.Next(0, 2) == 0;
+        isLying = rand.Next(0, 2) == 0;
 
         if (isLying)
         {

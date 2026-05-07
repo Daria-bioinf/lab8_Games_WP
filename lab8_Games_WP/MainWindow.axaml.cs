@@ -26,6 +26,8 @@ namespace lab8_Games_WP
                 txtResult.Text = "Czas się skonczył! Koniec gry.";
                 btnWieksza.IsEnabled = false;
                 btnMniejsza.IsEnabled = false;
+
+                GameHistory.History.Add($"Więcej/Mniej - Koniec czasu - Punkty: {score}");
             }
         }
         public Window? ParentMenu { get; set; }
@@ -71,6 +73,8 @@ namespace lab8_Games_WP
                 btnWieksza.IsEnabled = false;
                 btnMniejsza.IsEnabled = false;
                 return;
+
+                GameHistory.History.Add($"Więcej/Mniej - Przegrana - Punkty: {score}");
             }
 
             
@@ -98,6 +102,8 @@ namespace lab8_Games_WP
                 txtResult.Text = $"Źle! Karta była {newCard}. Koniec gry";
                 btnWieksza.IsEnabled = false;
                 btnMniejsza.IsEnabled = false;
+
+                GameHistory.History.Add($"Więcej/Mniej - Przegrana - Punkty: {score}");
             }
         }
 

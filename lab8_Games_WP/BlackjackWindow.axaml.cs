@@ -164,6 +164,8 @@ public partial class BlackjackWindow : Window
         if (dealerSum > 21 || playerSum > dealerSum)
         {
             txtStatus.Text = "Wygrałeś!";
+
+            GameHistory.History.Add($"Blackjack - Wygrana ({playerSum}:{dealerSum})");
         }
         else if (dealerSum == playerSum)
         {
@@ -172,6 +174,8 @@ public partial class BlackjackWindow : Window
         else
         {
             txtStatus.Text = "Przegrałeś!";
+
+            GameHistory.History.Add($"Blackjack - Przegrana ({playerSum}:{dealerSum})");
         }
     }
 

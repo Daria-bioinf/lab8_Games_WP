@@ -10,6 +10,8 @@ public partial class HistoryWindow : Window
     public HistoryWindow()
     {
         InitializeComponent();
+
+        lstHistory.ItemsSource = GameHistory.History;
     }
 
     public void BtnZamknij_Click(object source, RoutedEventArgs args)
