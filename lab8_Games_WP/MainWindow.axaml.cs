@@ -1,14 +1,32 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
-
+using Avalonia.Threading;
 namespace lab8_Games_WP
 {
     public partial class MainWindow : Window
     {
+        DispatcherTimer gameTimer;
+        int timeLeft = 5;
         public MainWindow()
         {
             InitializeComponent();
+            gameTimer = new DispatcherTimer();
+            gameTimer.Interval = TimeSpan.FromSeconds(1);
+            gameTimer.Tick += GameTimer_Tick;
+        }
+        private void GameTimer_Tick(object? sender, EventArgs e)
+        {
+            timeLeft--;
+            txtResult.Text = $"Czas: {timeLeft} s!"; 
+
+            if (timeLeft <= 0)
+            {
+                gameTimer.Stop();
+                txtResult.Text = "Czas się skonczył! Koniec gry.";
+                btnWieksza.IsEnabled = false;
+                btnMniejsza.IsEnabled = false;
+            }
         }
         public Window? ParentMenu { get; set; }
         Random rand = new Random();
@@ -16,6 +34,8 @@ namespace lab8_Games_WP
         int score = 0;
         public void BtnStart_Click(object sender, RoutedEventArgs e)
         {
+            timeLeft = 5;
+            gameTimer.Start();
             currentCard = rand.Next(1, 11);
             score = 0;
 
@@ -29,6 +49,7 @@ namespace lab8_Games_WP
 
         public void BtnWieksza_Click(object sender, RoutedEventArgs e)
         {
+            timeLeft = 5; 
             int newCard;
             do
             {
@@ -57,6 +78,7 @@ namespace lab8_Games_WP
 
         public void BtnMniejsza_Click(object sender, RoutedEventArgs e)
         {
+            timeLeft = 5; 
             int newCard;
             do
             {
