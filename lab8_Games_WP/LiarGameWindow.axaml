@@ -27,7 +27,7 @@
 			<Button x:Name="btnLiar" Content="Kłamstwo! ❌" Click="BtnLiar_Click" Width="130" Height="50" Background="DarkRed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		</StackPanel>
 
-		<Button Content="Następna runda" Click="BtnNext_Click" HorizontalAlignment="Center" IsEnabled="False" x:Name="btnNext"/>
+		<Button x:Name="btnNext" Content="Następna runda" Click="BtnNext_Click" HorizontalAlignment="Center" IsEnabled="False" />
 
 	</StackPanel>
 </Window>
