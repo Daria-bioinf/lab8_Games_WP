@@ -81,7 +81,7 @@ public partial class LiarGameWindow : Window
             claimedCard = realCard;
         }
 
-        txtClaim = new TextBlock();
+        
 
         txtClaim.Text = $"Komputer mowi: To jest {GetCardName(claimedCard)}!";
         txtCardValue.Text = "?";
