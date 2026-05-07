@@ -20,11 +20,6 @@ public partial class LiarGameWindow : Window
         BtnNext_Click(null, null);
     }
 
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
-    }
-
     private void CheckResult(bool playerSaysLiar)
     {
         txtCardValue.Text = realCard.ToString();
@@ -47,6 +42,18 @@ public partial class LiarGameWindow : Window
         btnNext.IsEnabled = true;
     }
 
+    private string GetCardName(int cardValue)
+    {
+        return cardValue switch
+        {
+            1 => "As",
+            11 => "Walet",
+            12 => "Dama",
+            13 => "Krol",
+            _ => cardValue.ToString()
+        };
+    }
+
     public void BtnBelieve_Click(object source, RoutedEventArgs args)
     {
         CheckResult(false);
@@ -59,14 +66,14 @@ public partial class LiarGameWindow : Window
 
     public void BtnNext_Click(object? source, RoutedEventArgs? args)
     {
-        realCard = rand.Next(1, 11);
+        realCard = rand.Next(1, 14);
         isLying = rand.Next(0, 2) == 0;
 
         if (isLying)
         {
             do
             {
-                claimedCard = rand.Next(1, 11);
+                claimedCard = rand.Next(1, 14);
             } while (claimedCard == realCard);
         }
         else
@@ -74,7 +81,9 @@ public partial class LiarGameWindow : Window
             claimedCard = realCard;
         }
 
-        txtClaim.Text = $"Komputer mowi: To jest {claimedCard}";
+        txtClaim = new TextBlock();
+
+        txtClaim.Text = $"Komputer mowi: To jest {GetCardName(claimedCard)}!";
         txtCardValue.Text = "?";
         txtStatus.Text = "Czy on klamie?";
 
