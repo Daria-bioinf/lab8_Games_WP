@@ -15,6 +15,7 @@ public partial class BlackjackWindow : Window
     List<(string name, int value)> playerCards = new();
     List<(string name, int value)> dealerCards = new();
 
+    bool waitingForAceChoice = false;
     public BlackjackWindow()
     {
         InitializeComponent();
@@ -26,7 +27,7 @@ public partial class BlackjackWindow : Window
 
         switch (card)
         {
-            case 1: return ("As", 11);
+            case 1: return ("As", 0);
             case 11: return ("Walet", 10);
             case 12: return ("Dama", 10);
             case 13: return ("Krol", 10);
@@ -70,7 +71,25 @@ public partial class BlackjackWindow : Window
 
     public void BtnHit_Click(object source, RoutedEventArgs args)
     {
+        if (waitingForAceChoice)
+        {
+            return;
+        }
+
         playerCards.Add(GenerateCard());
+
+        var lastCard = playerCards.Last();
+
+        if (lastCard.name == "As" && lastCard.value == 0)
+        {
+            waitingForAceChoice = true;
+
+            AcePanel.IsVisible = true;
+
+            txtStatus.Text = "Wybierz wartość Asa!";
+
+            return;
+        }
 
         UpdateUI();
 
@@ -84,6 +103,43 @@ public partial class BlackjackWindow : Window
 
             txtStatus.Text = "Przegrałeś! Ponad 21";
         }
+  
+    }
+
+    private void SetAceValue(int value)
+    {
+        var lastCard = playerCards.Last();
+
+        playerCards[playerCards.Count - 1] =
+            ("As", value);
+
+        waitingForAceChoice = false;
+
+        AcePanel.IsVisible = false;
+
+        UpdateUI();
+
+        int playerSum =
+            playerCards.Sum(c => c.value);
+
+        if (playerSum > 21)
+        {
+            txtStatus.Text = "Przegrałeś!";
+        }
+        else
+        {
+            txtStatus.Text = "Dobierz kartę lub Pas?";
+        }
+    }
+
+    public void BtnAceOne_Click(object source, RoutedEventArgs args)
+    {
+        SetAceValue(1);
+    }
+
+    public void BtnAceEleven_Click(object source, RoutedEventArgs args)
+    {
+        SetAceValue(11);
     }
 
     public void BtnStand_Click(object source, RoutedEventArgs args)

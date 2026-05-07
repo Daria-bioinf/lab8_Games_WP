@@ -27,7 +27,21 @@
 			<Button x:Name="btnLiar" Content="Kłamstwo! ❌" Click="BtnLiar_Click" Width="130" Height="50" Background="DarkRed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		</StackPanel>
 
+		<StackPanel x:Name="SuitPanel"
+            Orientation="Horizontal"
+            Spacing="10"
+            HorizontalAlignment="Center"
+            IsVisible="False">
+
+			<Button Content="♥ Kier" Click="BtnHeart_Click"/>
+			<Button Content="♠ Pik" Click="BtnSpade_Click"/>
+			<Button Content="♦ Karo" Click="BtnDiamond_Click"/>
+			<Button Content="♣ Trefl" Click="BtnClub_Click"/>
+
+		</StackPanel>
+		
 		<Button x:Name="btnNext" Content="Następna runda" Click="BtnNext_Click" HorizontalAlignment="Center" IsEnabled="False" />
+
 
 	</StackPanel>
 </Window>
